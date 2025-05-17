@@ -164,6 +164,7 @@
         // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
+        console.log('Form submitted to: ' + form.action); // Debug log
       });
 
       iframe.addEventListener('load', () => {
@@ -176,6 +177,7 @@
           message.className = 'mt-4 text-center font-medium text-green-600';
           message.textContent = 'Thanks for your RSVP!';
           section.appendChild(message);
+          console.log('Iframe loaded'); // Debug log
         }
       });
     })();
