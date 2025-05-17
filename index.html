@@ -20,7 +20,7 @@
     <main class="py-8 space-y-12">
       <section id="details" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Details</h2>
-        <ul class="space-y-2 text-base" id="event-details"></ul>
+        <ul class="space still not working, im getting this error now: Script function not found: doGet-y-2 text-base" id="event-details"></ul>
       </section>
 
       <section id="rsvp" class="bg-white p-6 rounded-lg shadow">
@@ -168,9 +168,30 @@
           submitBtn.textContent = 'Submit';
           const message = document.createElement('div');
           message.className = 'mt-4 text-center font-medium';
-          message.textContent = 'Thanks for your RSVP!';
-          message.className += ' text-green-600';
-          section.appendChild(message);
+          
+          // Workaround to detect errors (iframe doesn't expose response)
+          setTimeout(() => {
+            fetch(form.action, { method: 'POST', body: new FormData(form) })
+              .then(response => {
+                if (!response.ok) throw new Error('Submission failed');
+                return response.json();
+              })
+              .then(data => {
+                if (data.result === 'success') {
+                  message.textContent = 'Thanks for your RSVP!';
+                  message.className += ' text-green-600';
+                } else {
+                  throw new Error(data.message);
+                }
+              })
+              .catch(() => {
+                message.textContent = 'Error submitting RSVP. Please try again.';
+                message.className += ' text-red-600';
+                form.style.display = 'block';
+                submitted = false;
+              })
+              .finally(() => section.appendChild(message));
+          }, 1000); // Delay to allow iframe to process
         }
       });
     })();
