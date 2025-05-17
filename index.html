@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anya & Asha's 1st Birthday</title>
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <!-- Center wrapper with max width for desktop -->
+  <!-- Wrapper -->
   <div class="max-w-screen-md mx-auto px-4">
+
     <!-- Header -->
-    <header class="bg-white shadow rounded-b-lg">
+    <header class="bg-white shadow rounded-b-lg mt-6">
       <div class="py-6 text-center">
         <h1 class="text-3xl sm:text-4xl font-bold">Anya & Asha's 1st Birthday</h1>
         <p class="mt-2 text-lg">Party Invite</p>
@@ -20,7 +21,8 @@
 
     <!-- Main Content -->
     <main class="py-8 space-y-12">
-      <!-- Details -->
+
+      <!-- Details Section -->
       <section id="details" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Details</h2>
         <ul class="space-y-2 text-base">
@@ -31,17 +33,25 @@
         </ul>
       </section>
 
-      <!-- RSVP Form -->
+      <!-- RSVP Form Section -->
       <section id="rsvp" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">RSVP</h2>
-        <form id="rsvp-form" class="space-y-4">
+        <!-- Hidden iframe for form submission -->
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+        <form id="rsvp-form"
+              action="https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbxNQ_nRMVJKuGhlpXPsXxuD0lfVJaVYC3kNeTCUq4erOOf17eAmrUzjF0hByMFSuQQmcg/exec/exec"
+              method="post"
+              target="hidden_iframe"
+              class="space-y-4">
           <div>
             <label for="name" class="block font-medium">Name:</label>
-            <input type="text" id="name" name="name" required placeholder="Your full name" class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2" />
+            <input type="text" id="name" name="name" required
+                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2"/>
           </div>
           <div>
             <label for="attendance" class="block font-medium">Attendance:</label>
-            <select id="attendance" name="attendance" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2">
+            <select id="attendance" name="attendance" required
+                    class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2">
               <option value="">Select an option</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -49,9 +59,12 @@
           </div>
           <div>
             <label for="guests" class="block font-medium">Number of Guests:</label>
-            <input type="number" id="guests" name="guests" min="0" required placeholder="0" class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2" />
+            <input type="number" id="guests" name="guests" min="0" required
+                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2"/>
           </div>
-          <button type="submit" class="w-full bg-blue-500 text-white px-6 py-2 rounded-md shadow">Submit</button>
+          <button type="submit" class="w-full bg-blue-500 text-white px-6 py-2 rounded-md shadow">
+            Submit
+          </button>
         </form>
       </section>
 
@@ -59,37 +72,43 @@
       <section id="gallery" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Photo Gallery</h2>
         <div class="relative">
-          <img id="gallery-image" src="/pic1.JPG" alt="Gallery Image" class="w-full h-auto object-cover rounded" />
-          <button id="prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">&#x2039;</button>
-          <button id="next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">&#x203A;</button>
+          <img id="gallery-image" src="/pic1.JPG" alt="Gallery Image"
+               class="w-full h-auto object-cover rounded" />
+          <button id="prev"
+                  class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">
+            &#x2039;
+          </button>
+          <button id="next"
+                  class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">
+            &#x203A;
+          </button>
         </div>
       </section>
 
-      <!-- Location Map -->
+      <!-- Location Map Section -->
       <section id="location" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Location Map</h2>
         <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6763.857602151859!2d101.6741223!3d3.1937161000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc472341d93f1d%3A0xd90ebacb07e453db!2sBotanica%2BCo%20at%20Bamboo%20Hills!5e1!3m2!1sen!2smy!4v1747501954657!5m2!1sen!2smy" 
-            class="w-full h-full" 
-            style="border:0;" 
-            allowfullscreen 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6763.857602151859!2d101.6741223!3d3.1937161000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc472341d93f1d%3A0xd90ebacb07e453db!2sBotanica%2BCo%20at%20Bamboo%20Hills!5e1!3m2!1sen!2smy!4v1747501954657!5m2!1sen!2smy"
+                  class="w-full h-full" style="border:0;"
+                  allowfullscreen loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-white text-center py-4 rounded-t-lg shadow">
       <p>Questions? <a href="mailto:you@example.com" class="underline text-blue-600">you@example.com</a></p>
     </footer>
+
   </div>
 
   <!-- Scripts -->
   <script>
-    // Photo gallery carousel
+    // Carousel logic
     (function() {
       const images = ['/pic1.JPG','/pic2.JPG','/pic3.JPG','/pic4.JPG'];
       let current = 0;
@@ -104,27 +123,20 @@
       });
     })();
 
-    // RSVP form submission to Google Sheets
+    // Collapse form on submit
     (function() {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNQ_nRMVJKuGhlpXPsXxuD0lfVJaVYC3kNeTCUq4erOOf17eAmrUzjF0hByMFSuQQmcg/exec'; // replace with your Apps Script URL
       const form = document.getElementById('rsvp-form');
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const attendance = document.getElementById('attendance').value;
-        const guests = document.getElementById('guests').value;
-        try {
-          await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, attendance, guests })
-          });
-          alert('Thank you for your RSVP!');
-          form.reset();
-        } catch (error) {
-          console.error(error);
-          alert('Error submitting. Please try again.');
+      const section = document.getElementById('rsvp');
+      const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+      let submitted = false;
+      iframe.addEventListener('load', () => {
+        if (!submitted) {
+          submitted = true;
+          form.style.display = 'none';
+          const thanks = document.createElement('div');
+          thanks.textContent = 'Thanks for your RSVP!';
+          thanks.className = 'mt-4 text-center font-medium text-green-600';
+          section.appendChild(thanks);
         }
       });
     })();
