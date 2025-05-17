@@ -1,0 +1,11 @@
+{
+    "routes": [
+      {
+        "path": "/*",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self' https://script.google.com; connect-src 'self' https://script.google.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data:; style-src 'self' 'unsafe-inline';"
+        }
+      }
+    ]
+  }
+  
