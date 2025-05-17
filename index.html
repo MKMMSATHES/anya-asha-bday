@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RSVP for Anya & Asha's 1st Birthday Party on 29th June 2025 at Botanica+Co, Kuala Lumpur." />
   <title>Anya & Asha's 1st Birthday</title>
-  <!-- Tailwind CSS -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <!-- Wrapper -->
   <div class="max-w-screen-md mx-auto px-4">
-
-    <!-- Header -->
     <header class="bg-white shadow rounded-b-lg mt-6">
       <div class="py-6 text-center">
         <h1 class="text-3xl sm:text-4xl font-bold">Anya & Asha's 1st Birthday</h1>
@@ -19,24 +17,14 @@
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-8 space-y-12">
-
-      <!-- Details Section -->
       <section id="details" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Details</h2>
-        <ul class="space-y-2 text-base">
-          <li><strong>Date:</strong> 29th June 2025</li>
-          <li><strong>Time:</strong> 1200 to 1500hrs</li>
-          <li>Lunch will be served.</li>
-          <li><strong>Location:</strong> Botanica+Co at Bamboo Hills, Kuala Lumpur</li>
-        </ul>
+        <ul class="space-y-2 text-base" id="event-details"></ul>
       </section>
 
-      <!-- RSVP Form Section -->
       <section id="rsvp" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">RSVP</h2>
-        <!-- Hidden iframe for form submission -->
         <iframe name="hidden_iframe" style="display:none;"></iframe>
         <form id="rsvp-form"
               action="https://script.google.com/macros/s/AKfycbzucHycz2PCxAN9mMc6WUDmhrCEoj4ab4qR4V_fC0-qxZEEeHdwuWXc5_b6S5P2th8rfQ/exec"
@@ -45,12 +33,12 @@
               class="space-y-4">
           <div>
             <label for="name" class="block font-medium">Name:</label>
-            <input type="text" id="name" name="name" required
+            <input type="text" id="name" name="name" required aria-required="true"
                    class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2"/>
           </div>
           <div>
             <label for="attendance" class="block font-medium">Attendance:</label>
-            <select id="attendance" name="attendance" required
+            <select id="attendance" name="attendance" required aria-required="true"
                     class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2">
               <option value="">Select an option</option>
               <option value="Yes">Yes</option>
@@ -59,33 +47,32 @@
           </div>
           <div>
             <label for="guests" class="block font-medium">Number of Guests:</label>
-            <input type="number" id="guests" name="guests" min="0" required
+            <input type="number" id="guests" name="guests" min="0" required aria-required="true"
                    class="mt-1 w-full border-gray-300 rounded-md shadow-sm px-3 py-2"/>
           </div>
-          <button type="submit" class="w-full bg-blue-500 text-white px-6 py-2 rounded-md shadow">
+          <button type="submit" id="submit-btn"
+                  class="w-full bg-blue-500 text-white px-6 py-2 rounded-md shadow">
             Submit
           </button>
         </form>
       </section>
 
-      <!-- Photo Gallery Carousel -->
       <section id="gallery" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Photo Gallery</h2>
         <div class="relative">
-          <img id="gallery-image" src="/pic1.JPG" alt="Gallery Image"
+          <img id="gallery-image" src="/images/pic1.JPG" alt="Gallery Image 1"
                class="w-full h-auto object-cover rounded" />
-          <button id="prev"
+          <button id="prev" aria-label="Previous image"
                   class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">
-            &#x2039;
+            ‹
           </button>
-          <button id="next"
+          <button id="next" aria-label="Next image"
                   class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow">
-            &#x203A;
+            ›
           </button>
         </div>
       </section>
 
-      <!-- Location Map Section -->
       <section id="location" class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-2xl font-semibold mb-4">Location Map</h2>
         <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded">
@@ -96,50 +83,100 @@
           </iframe>
         </div>
       </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white text-center py-4 rounded-t-lg shadow">
-      <p>Questions? <a href="mailto:you@example.com" class="underline text-blue-600">you@example.com</a></p>
+      <p>Questions? <a href="#" id="contact-link" class="underline text-blue-600">Contact us</a></p>
     </footer>
-
   </div>
 
-  <!-- Scripts -->
   <script>
+    // Event details
+    const eventDetails = {
+      date: '29th June 2025',
+      time: '1200 to 1500hrs',
+      location: 'Botanica+Co at Bamboo Hills, Kuala Lumpur',
+      lunch: 'Lunch will be served.'
+    };
+    document.getElementById('event-details').innerHTML = `
+      <li><strong>Date:</strong> ${eventDetails.date}</li>
+      <li><strong>Time:</strong> ${eventDetails.time}</li>
+      <li>${eventDetails.lunch}</li>
+      <li><strong>Location:</strong> ${eventDetails.location}</li>
+    `;
+
     // Carousel logic
     (function() {
-      const images = ['/pic1.JPG','/pic2.JPG','/pic3.JPG','/pic4.JPG'];
+      const images = ['/images/pic1.JPG', '/images/pic2.JPG', '/images/pic3.JPG', '/images/pic4.JPG'];
       let current = 0;
       const imgEl = document.getElementById('gallery-image');
+      
+      imgEl.addEventListener('error', () => {
+        imgEl.src = '/images/fallback.jpg';
+        imgEl.alt = 'Image not available';
+      });
+
       document.getElementById('prev').addEventListener('click', () => {
         current = (current - 1 + images.length) % images.length;
         imgEl.src = images[current];
+        imgEl.alt = `Gallery image ${current + 1}`;
       });
+
       document.getElementById('next').addEventListener('click', () => {
         current = (current + 1) % images.length;
         imgEl.src = images[current];
+        imgEl.alt = `Gallery image ${current + 1}`;
       });
     })();
 
-    // Collapse form on submit
+    // Form submission
     (function() {
       const form = document.getElementById('rsvp-form');
       const section = document.getElementById('rsvp');
+      const submitBtn = document.getElementById('submit-btn');
       const iframe = document.querySelector('iframe[name="hidden_iframe"]');
       let submitted = false;
+
+      form.addEventListener('submit', (e) => {
+        if (submitted) return;
+
+        // Client-side validation
+        const name = document.getElementById('name').value.trim();
+        const guests = parseInt(document.getElementById('guests').value, 10);
+
+        if (!/^[a-zA-Z\s]+$/.test(name)) {
+          e.preventDefault();
+          alert('Please enter a valid name (letters and spaces only).');
+          return;
+        }
+        if (guests < 0 || guests > 50) {
+          e.preventDefault();
+          alert('Number of guests must be between 0 and 50.');
+          return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      });
+
       iframe.addEventListener('load', () => {
         if (!submitted) {
           submitted = true;
           form.style.display = 'none';
-          const thanks = document.createElement('div');
-          thanks.textContent = 'Thanks for your RSVP!';
-          thanks.className = 'mt-4 text-center font-medium text-green-600';
-          section.appendChild(thanks);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit';
+          const message = document.createElement('div');
+          message.className = 'mt-4 text-center font-medium';
+          message.textContent = 'Thanks for your RSVP!';
+          message.className += ' text-green-600';
+          section.appendChild(message);
         }
       });
     })();
+
+    // Dynamic email
+    document.getElementById('contact-link').href = 'mailto:' + 'your-email' + '@example.com';
   </script>
 </body>
 </html>
